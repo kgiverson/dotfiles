@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# pg-up - Start up postgres installed via homebrew
+
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
