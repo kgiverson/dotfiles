@@ -62,24 +62,12 @@
         Bundle 'tomtom/checksyntax_vim'
         "Bundle 'godlygeek/tabular'
 
-    " PHP
-        "Bundle 'spf13/PIV'
-        "Bundle 'taxilian/VimDebugger'
-
-    " Python
-        "Bundle 'bloveridge/pyflakes-vim'
-        "Bundle 'generalov/pyflakes-vim'
-        "Bundle 'fs111/pydoc.vim'
-        "Bundle 'python.vim'
-        "Bundle 'python_match.vim'
-        "Bundle 'pythoncomplete'
-
     " Javascript
         "Bundle 'bloveridge/jslint.vim'
         Bundle 'leshill/vim-json'
+        Bundle 'kchmck/vim-coffee-script'
 
     " Ruby
-        "Bundle 'rails.vim'
         Bundle 'tpope/vim-rails'
 
     " Misc
