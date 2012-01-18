@@ -44,6 +44,7 @@
 "    " General
         "Bundle 'scrooloose/nerdtree'
         Bundle 'altercation/vim-colors-solarized'
+        Bundle 'Lokaltog/vim-powerline'
         Bundle 'spf13/vim-colors'
         Bundle 'tpope/vim-surround'
         Bundle 'ervandew/supertab'
