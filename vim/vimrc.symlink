@@ -43,9 +43,11 @@
     " General Programming
         " Pick one of the checksyntax, jslint, or syntastic
         "Bundle 'tomtom/checksyntax_vim'
-        "Bundle 'scrooloose/syntastic'
-        Bundle 'garbas/vim-snipmate'
-        Bundle 'scrooloose/snipmate-snippets'
+        Bundle 'scrooloose/syntastic'
+        " Going old schoool because new version doesn't seem to work
+        Bundle 'snipMate'
+        "Bundle 'garbas/vim-snipmate'
+        "Bundle 'scrooloose/snipmate-snippets'
         Bundle 'tpope/vim-fugitive' 
         Bundle 'scrooloose/nerdcommenter'
         "Bundle 'Shougo/neocomplcache'
@@ -83,6 +85,9 @@
     set history=1000                " Store a ton of history (default is 20)
     set spell                       " spell checking on
     set hidden                      " allow buffer switching without saving
+
+    " setup for ctags
+    set tags=./tags;
 
     " Setting up the directories {
         set backup                      " backups are nice ...
@@ -247,9 +252,9 @@
         " Setting the author var
         " If forking, please overwrite in your .vimrc.local file
         "let g:snips_author = 'Kevin Iverson <kgiverson@gmail.com>'
-        let g:snipMate = {}
-        let g:snipMate.scope_aliases = {}
-        let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails'
+        "let g:snipMate = {}
+        "let g:snipMate.scope_aliases = {}
+        "let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails'
     " }
 
      " Buffer explorer {
