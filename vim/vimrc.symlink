@@ -89,6 +89,7 @@
             Bundle 'godlygeek/tabular'
             Bundle 'majutsushi/tagbar'
             Bundle 'Shougo/neocomplcache'
+            Bundle 'Shougo/neocomplcache'
         endif
 
     " PHP
@@ -111,6 +112,7 @@
             Bundle 'groenewege/vim-less'
             Bundle 'taxilian/vim-web-indent'
             Bundle 'kchmck/vim-coffee-script'
+            Bundle 'aaronj1335/underscore-templates.vim'
         endif
 
     " HTML
@@ -123,6 +125,7 @@
         if count(g:spf13_bundle_groups, 'ruby')
             "Bundle 'rails.vim'
             Bundle 'tpope/vim-rails'
+            Bundle 'tpope/vim-haml'
         endif
 
     " Misc
@@ -142,6 +145,9 @@
     endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " syntax highlighting
+     " underscore-templates.vim {
+        au BufNewFile,BufRead *.ejs set syntax=underscore_template
+     "}
     " coffee hack KGI
     "filetype off
     "filetype on
@@ -166,8 +172,8 @@
             set undoreload=10000        "maximum number lines to save for undo on a buffer reload
         endif
         " Could use * rather than *.*, but I prefer to leave .files unsaved
-        au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
-        au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
+        "au BufWinLeave *.* silent! mkview  "make vim save view (state) (folds, cursor, etc)
+        "au BufWinEnter *.* silent! loadview "make vim load view (state) (folds, cursor, etc)
     " }
 " }
 
@@ -315,6 +321,9 @@
 
     " Adjust viewports to the same size
     map <Leader>= <C-w>=
+
+    " Leader s speed up search and replace
+    nnoremap <Leader>s :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 " }
 
 " Plugins {
@@ -355,7 +364,7 @@
     " }
 
     " Ctags {
-        set tags=./tags;/,~/.vimtags
+        set tags=./tags;/,~/.vimtags,~/Development/dateable/gem.tags
     " }
 
     " EasyTags {
@@ -382,11 +391,12 @@
         nmap <leader>nt :NERDTreeFind<CR>
 
         let NERDTreeShowBookmarks=1
-        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.DS_Store']
         let NERDTreeChDirMode=0
         let NERDTreeQuitOnOpen=1
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
+        let g:nerdtree_tabs_open_on_gui_startup = 0
     " }
 
     " Tabularize {
