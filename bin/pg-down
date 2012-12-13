@@ -2,5 +2,5 @@
 
 # pg-down - Start up postgres installed via homebrew
 
-pg_ctl -D /usr/local/var/postgres stop -s -m fast
+/usr/local/Cellar/postgresql/9.1.4/bin/pg_ctl -D /usr/local/var/postgres stop -s -m fast
 

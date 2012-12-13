@@ -90,6 +90,8 @@
             Bundle 'majutsushi/tagbar'
             Bundle 'Shougo/neocomplcache'
             Bundle 'Shougo/neocomplcache'
+            Bundle 'epmatsw/ag.vim'
+            Bundle 'benmills/vimux'
         endif
 
     " PHP
@@ -146,7 +148,7 @@
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " syntax highlighting
      " underscore-templates.vim {
-        au BufNewFile,BufRead *.ejs set syntax=underscore_template
+        au BufNewFile,BufRead *.ejs set filetype=html
      "}
     " coffee hack KGI
     "filetype off
@@ -370,6 +372,10 @@
     " EasyTags {
         let g:easytags_cmd = 'ctags'
     " }
+    
+    " Syntastic {
+        let g:syntastic_coffee_lint_options = '-f ~/.coffeelint/coffeelint.json'
+    " }
 
     " AutoCloseTag {
         " Make it so AutoCloseTag works for xml and xhtml files as well
@@ -383,6 +389,23 @@
         let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
         " Shortcut for reloading snippets, useful when developing
         nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
+    " }
+    "
+    " Vimux {
+        " Run rspec on current file"
+        map <Leader>vrs :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+        " Close vim tmux runner opened by VimuxRunCommand
+        map <Leader>vq :VimuxCloseRunner<CR>"
+        " Prompt for a command to run
+        map <Leader>vp :VimuxPromptCommand<CR>
+        " Run last command executed by VimuxRunCommand
+        map <Leader>vl :VimuxRunLastCommand<CR>
+        " Inspect runner pane
+        map <Leader>vi :VimuxInspectRunner<CR>
+        " Close all other tmux panes in current window
+        map <Leader>vx :VimuxClosePanes<CR>
+        " Interrupt any command running in the runner pane
+        map <Leader>vs :VimuxInterruptRunner<CR>
     " }
 
     " NerdTree {

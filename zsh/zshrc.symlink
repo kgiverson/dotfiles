@@ -62,3 +62,8 @@ compinit
 
 # load every completion after autocomplete loads
 for config_file ($DOTFILES/**/completion.sh) source $config_file
+
+alias tmux="TERM=screen-256color-bce tmux"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

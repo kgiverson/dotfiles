@@ -2,4 +2,4 @@
 
 # pg-up - Start up postgres installed via homebrew
 
-pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+/usr/local/Cellar/postgresql/9.1.4/bin/pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start

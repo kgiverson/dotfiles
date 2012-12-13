@@ -1,1 +1,6 @@
 alias reload!='. ~/.zshrc'
+alias ssh_prod_app_master='ssh deploy@ec2-54-243-142-119.compute-1.amazonaws.com'
+alias ssh_prod_app_slave='ssh deploy@ec2-23-22-78-234.compute-1.amazonaws.com'
+alias ssh_prod_db_master='ssh deploy@ec2-23-22-162-186.compute-1.amazonaws.com'
+alias ssh_prod_util='ssh deploy@ec2-23-22-162-186.compute-1.amazonaws.com'
+alias ssh_staging='ssh deploy@ec2-54-243-143-162.compute-1.amazonaws.com'
