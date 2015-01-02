@@ -82,39 +82,31 @@
         if count(g:spf13_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
             Bundle 'scrooloose/syntastic'
-            Bundle 'garbas/vim-snipmate'
-            Bundle 'spf13/snipmate-snippets'
+            "Bundle 'garbas/vim-snipmate'
+            "Bundle 'spf13/snipmate-snippets'
             Bundle 'tpope/vim-fugitive'
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'godlygeek/tabular'
             Bundle 'majutsushi/tagbar'
             "Bundle 'Shougo/neocomplcache'
-            Bundle 'Shougo/neocomplcache'
             Bundle 'epmatsw/ag.vim'
-            Bundle 'benmills/vimux'
-        endif
-
-    " PHP
-        if count(g:spf13_bundle_groups, 'php')
-            "Bundle 'spf13/PIV'
-        endif
-
-    " Python
-        if count(g:spf13_bundle_groups, 'python')
-            " Pick either python-mode or pyflakes & pydoc
-            "Bundle 'klen/python-mode'
-            "Bundle 'python.vim'
-            "Bundle 'python_match.vim'
-            "Bundle 'pythoncomplete'
+            "Bundle 'benmills/vimux'
+            Bundle 'tclem/vim-arduino'
+            Bundle 'sudar/vim-arduino-syntax'
+            Bundle 'Valloric/YouCompleteMe'
+            Bundle 'marijnh/tern_for_vim'
+            Bundle 'freitass/todo.txt-vim'
         endif
 
     " Javascript
         if count(g:spf13_bundle_groups, 'javascript')
             Bundle 'leshill/vim-json'
             Bundle 'groenewege/vim-less'
-            Bundle 'taxilian/vim-web-indent'
             Bundle 'kchmck/vim-coffee-script'
             Bundle 'aaronj1335/underscore-templates.vim'
+            Bundle 'pangloss/vim-javascript'
+            Bundle 'jelera/vim-javascript-syntax'
+            Bundle 'nathanaelkane/vim-indent-guides'
         endif
 
     " HTML
@@ -125,7 +117,6 @@
 
     " Ruby
         if count(g:spf13_bundle_groups, 'ruby')
-            "Bundle 'rails.vim'
             Bundle 'tpope/vim-rails'
             Bundle 'tpope/vim-haml'
         endif
@@ -134,8 +125,7 @@
         if count(g:spf13_bundle_groups, 'misc')
             Bundle 'spf13/vim-markdown'
             Bundle 'spf13/vim-preview'
-            "Bundle 'tpope/vim-cucumber'
-            "Bundle 'Puppet-Syntax-Highlighting'
+            Bundle 'Puppet-Syntax-Highlighting'
         endif
     endif
 " }
@@ -233,7 +223,7 @@
 " Formatting {
     set nowrap                      " wrap long lines
     set autoindent                  " indent at the same level of the previous line
-    set shiftwidth=2                " use indents of 4 spaces
+    set shiftwidth=2                " use indents of 2 spaces
     set expandtab                   " tabs are spaces, not tabs
     set tabstop=4                   " an indentation every four columns
     set softtabstop=2               " let backspace delete indent
@@ -375,6 +365,8 @@
     
     " Syntastic {
         let g:syntastic_coffee_lint_options = '-f ~/.coffeelint/coffeelint.json'
+        "let g:syntastic_ruby_exec = 'ruby19'
+        let g:syntastic_ruby_exec = '~/.rvm/rubies/default/bin/ruby'
     " }
 
     " AutoCloseTag {
@@ -502,64 +494,69 @@
         nnoremap <silent> <leader>gl :Glog<CR>
         nnoremap <silent> <leader>gp :Git push<CR>
      "}
+     "" YouCompleteMe {
+      "let g:ycm_add_preview_to_completeopt=0
+      "let g:ycm_confirm_extra_conf=0
+      "set completeopt-=preview
+     ""}
 
-     " neocomplcache {
-        let g:neocomplcache_enable_at_startup = 1
-        let g:neocomplcache_enable_camel_case_completion = 1
-        let g:neocomplcache_enable_smart_case = 1
-        let g:neocomplcache_enable_underbar_completion = 1
-        let g:neocomplcache_min_syntax_length = 3
-        let g:neocomplcache_enable_auto_delimiter = 1
+     "" neocomplcache {
+        "let g:neocomplcache_enable_at_startup = 1
+        "let g:neocomplcache_enable_camel_case_completion = 1
+        "let g:neocomplcache_enable_smart_case = 1
+        "let g:neocomplcache_enable_underbar_completion = 1
+        "let g:neocomplcache_min_syntax_length = 3
+        "let g:neocomplcache_enable_auto_delimiter = 1
 
-        " AutoComplPop like behavior.
-        let g:neocomplcache_enable_auto_select = 0
+        "" AutoComplPop like behavior.
+        "let g:neocomplcache_enable_auto_select = 0
 
-        " SuperTab like snippets behavior.
-        imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+        "" SuperTab like snippets behavior.
+        "imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
-        " Plugin key-mappings.
-        imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-        smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-        inoremap <expr><C-g>     neocomplcache#undo_completion()
-        inoremap <expr><C-l>     neocomplcache#complete_common_string()
+        "" Plugin key-mappings.
+        "imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+        "smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+        "inoremap <expr><C-g>     neocomplcache#undo_completion()
+        "inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 
-        " <CR>: close popup 
-        " <s-CR>: close popup and save indent.
-        inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-        inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>" 
-        " <TAB>: completion.
-        inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+        "" <CR>: close popup 
+        "" <s-CR>: close popup and save indent.
+        "inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+        "inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>" 
+        "" <TAB>: completion.
+        "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-        " <C-h>, <BS>: close popup and delete backword char.
-        inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-        inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-        inoremap <expr><C-y>  neocomplcache#close_popup()
-        inoremap <expr><C-e>  neocomplcache#cancel_popup()
+        "" <C-h>, <BS>: close popup and delete backword char.
+        "inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+        "inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+        "inoremap <expr><C-y>  neocomplcache#close_popup()
+        "inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
-        " Enable omni completion.
-        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+        "" Enable omni completion.
+        "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+        "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-        " Enable heavy omni completion.
-        if !exists('g:neocomplcache_omni_patterns')
-            let g:neocomplcache_omni_patterns = {}
-        endif
-        let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-        "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-        let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-        let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-        let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+        "" Enable heavy omni completion.
+        "if !exists('g:neocomplcache_omni_patterns')
+            "let g:neocomplcache_omni_patterns = {}
+        "endif
+        "let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+        ""autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+        "let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+        "let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+        "let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-        " For snippet_complete marker.
-        if has('conceal')
-            set conceallevel=2 concealcursor=i
-        endif
+        "" For snippet_complete marker.
+        "if has('conceal')
+            "set conceallevel=2 concealcursor=i
+        "endif
 
-     " }
+     "" }
 
 
 " }
@@ -574,6 +571,9 @@
             "set transparency=5          " Make the window slightly transparent
         "endif
     else
+        if &term == 'xterm' || &term == 'screen'
+          set t_Co=256
+        endif
         "set term=builtin_ansi       " Make arrow and other keys work
     endif
 " }
